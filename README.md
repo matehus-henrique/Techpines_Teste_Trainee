@@ -1,8 +1,8 @@
-# Discography Manager
+# Discography Manager Tião Carreiro e Pardinho
 
 ## Resumo da Aplicação
 
-**Discography Manager** é uma aplicação web desenvolvida com Laravel que permite gerenciar álbuns e faixas de música. A aplicação oferece funcionalidades para criar, visualizar, atualizar e excluir álbuns e faixas. Ela é projetada para ser um sistema simples e eficiente para gerenciar uma discografia, proporcionando uma interface amigável para gerenciar as informações dos álbuns e suas faixas associadas.
+**Discography Manager Tião Carreiro e Pardinho** é uma aplicação web desenvolvida com Laravel que permite gerenciar álbuns e faixas de música. A aplicação oferece funcionalidades para criar, visualizar, atualizar e excluir álbuns e faixas. Ela é projetada para ser um sistema simples e eficiente para gerenciar uma discografia, proporcionando uma interface amigável para gerenciar as informações dos álbuns e suas faixas associadas.
 
 ### Funcionalidades
 
