@@ -1,66 +1,219 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Discography Manager
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Resumo da Aplicação
 
-## About Laravel
+**Discography Manager** é uma aplicação web desenvolvida com Laravel que permite gerenciar álbuns e faixas de música. A aplicação oferece funcionalidades para criar, visualizar, atualizar e excluir álbuns e faixas. Ela é projetada para ser um sistema simples e eficiente para gerenciar uma discografia, proporcionando uma interface amigável para gerenciar as informações dos álbuns e suas faixas associadas.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Funcionalidades
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Gerenciar Álbuns:** Adicionar, editar, visualizar e excluir álbuns.
+- **Gerenciar Faixas:** Adicionar, editar, visualizar e excluir faixas associadas a álbuns.
+- **Interface Intuitiva:** Navegue facilmente entre álbuns e faixas usando uma interface web simples.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Requisições da API com Postman
 
-## Learning Laravel
+### Endpoints
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### Álbuns
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. **Listar Álbuns**
+   - **Método:** GET
+   - **URL:** `/albums`
+   - **Descrição:** Retorna uma lista de todos os álbuns.
+   - **Exemplo de Requisição:**
+     ```http
+     GET /albums
+     ```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. **Criar Álbum**
+   - **Método:** POST
+   - **URL:** `/albums`
+   - **Descrição:** Cria um novo álbum.
+   - **Corpo da Requisição (JSON):**
+     ```json
+     {
+       "name": "Nome do Álbum"
+     }
+     ```
 
-## Laravel Sponsors
+3. **Visualizar Álbum**
+   - **Método:** GET
+   - **URL:** `/albums/{id}`
+   - **Descrição:** Retorna os detalhes de um álbum específico, incluindo suas faixas.
+   - **Exemplo de Requisição:**
+     ```http
+     GET /albums/1
+     ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+4. **Atualizar Álbum**
+   - **Método:** PUT
+   - **URL:** `/albums/{id}`
+   - **Descrição:** Atualiza os detalhes de um álbum específico.
+   - **Corpo da Requisição (JSON):**
+     ```json
+     {
+       "name": "Novo Nome do Álbum"
+     }
+     ```
 
-### Premium Partners
+5. **Excluir Álbum**
+   - **Método:** DELETE
+   - **URL:** `/albums/{id}`
+   - **Descrição:** Exclui um álbum específico.
+   - **Exemplo de Requisição:**
+     ```http
+     DELETE /albums/1
+     ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+#### Faixas
 
-## Contributing
+1. **Listar Faixas de um Álbum**
+   - **Método:** GET
+   - **URL:** `/albums/{id}/tracks`
+   - **Descrição:** Retorna uma lista de todas as faixas associadas a um álbum específico.
+   - **Exemplo de Requisição:**
+     ```http
+     GET /albums/1/tracks
+     ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. **Criar Faixa**
+   - **Método:** POST
+   - **URL:** `/tracks`
+   - **Descrição:** Cria uma nova faixa associada a um álbum.
+   - **Corpo da Requisição (JSON):**
+     ```json
+     {
+       "name": "Nome da Faixa",
+       "album_id": 1
+     }
+     ```
 
-## Code of Conduct
+3. **Visualizar Faixa**
+   - **Método:** GET
+   - **URL:** `/tracks/{id}`
+   - **Descrição:** Retorna os detalhes de uma faixa específica.
+   - **Exemplo de Requisição:**
+     ```http
+     GET /tracks/1
+     ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+4. **Atualizar Faixa**
+   - **Método:** PUT
+   - **URL:** `/tracks/{id}`
+   - **Descrição:** Atualiza os detalhes de uma faixa específica.
+   - **Corpo da Requisição (JSON):**
+     ```json
+     {
+       "name": "Novo Nome da Faixa",
+       "album_id": 1
+     }
+     ```
 
-## Security Vulnerabilities
+5. **Excluir Faixa**
+   - **Método:** DELETE
+   - **URL:** `/tracks/{id}`
+   - **Descrição:** Exclui uma faixa específica.
+   - **Exemplo de Requisição:**
+     ```http
+     DELETE /tracks/1
+     ```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Explicação das Telas
 
-## License
+### Tela de Boas-vindas
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+A tela de boas-vindas é a página inicial da aplicação e fornece um resumo das funcionalidades da aplicação. Ela inclui:
+- **Cabeçalho:** Título e descrição breve da aplicação.
+- **Menu:** Botões para acessar as funcionalidades principais:
+  - **Ver Álbuns:** Redireciona para a lista de álbuns.
+  - **Adicionar Novo Álbum:** Redireciona para o formulário de criação de um novo álbum.
+  - **Ver Faixas (Álbum 1):** Redireciona para a lista de faixas do álbum com ID 1.
+ 
+  -![image](https://github.com/user-attachments/assets/88777290-3484-4530-a106-8393006cd0ca)
+
+
+
+### Tela de Lista de Álbuns
+
+Esta tela exibe todos os álbuns cadastrados na aplicação. Para cada álbum, é possível:
+- **Editar:** Redireciona para o formulário de edição do álbum.
+- **Excluir:** Remove o álbum da lista.
+
+- ![image](https://github.com/user-attachments/assets/2f99099f-5336-4736-9dfd-dab907c76241)
+
+
+### Tela de Criação de Álbum
+
+Nesta tela, você pode inserir os detalhes de um novo álbum e salvar essas informações na aplicação.
+
+![image](https://github.com/user-attachments/assets/f40cd6a9-784a-4922-a645-f35cede24c39)
+
+
+
+### Tela de Edição de Álbum
+
+Permite atualizar as informações de um álbum existente. Após as alterações, os dados são salvos e a lista de álbuns é atualizada.
+
+![image](https://github.com/user-attachments/assets/ba7d255e-e66e-4933-8478-95d1e14a64ea)
+
+
+
+### Tela de Lista de Faixas
+
+Exibe todas as faixas associadas a um álbum específico. Para cada faixa, você pode:
+- **Editar:** Redireciona para o formulário de edição da faixa.
+- **Excluir:** Remove a faixa da lista.
+
+![image](https://github.com/user-attachments/assets/935893ff-d89f-4528-8b02-439c1630c74e)
+
+
+
+### Tela de Criação de Faixa
+
+Nesta tela, você pode inserir os detalhes de uma nova faixa e associá-la a um álbum existente.
+
+![image](https://github.com/user-attachments/assets/c5087850-55e1-4dff-b804-928f51328f84)
+
+
+
+### Tela de Edição de Faixa
+
+Permite atualizar as informações de uma faixa existente. Após as alterações, os dados são salvos e a lista de faixas é atualizada.
+
+![image](https://github.com/user-attachments/assets/a81764a1-e726-4c01-98ae-2143778e6c39)
+
+
+
+## Banco de Dados
+
+Neste projeto, utilizei o **MySQL** como sistema de gerenciamento de banco de dados. O MySQL é um dos bancos de dados relacionais mais populares e confiáveis, conhecido por sua robustez e escalabilidade. 
+
+### Estrutura do Banco de Dados
+
+O banco de dados é utilizado para armazenar todas as informações relacionadas a álbuns e faixas. A estrutura do banco de dados inclui:
+
+- **Tabelas para Álbuns e Faixas:** 
+  - A tabela de álbuns armazena informações sobre cada álbum, como o nome do álbum.
+  - A tabela de faixas contém detalhes sobre cada faixa, incluindo o nome da faixa e o ID do álbum ao qual está associada.
+
+- **Relacionamentos:**
+  - A tabela de faixas possui uma chave estrangeira que referencia a tabela de álbuns, estabelecendo um relacionamento entre faixas e seus respectivos álbuns.
+
+A configuração do banco de dados MySQL permite que a aplicação execute operações CRUD (Criar, Ler, Atualizar e Excluir) de maneira eficiente, garantindo que os dados sejam armazenados e recuperados de forma segura e organizada.
+
+### Configuração
+
+Para garantir que a aplicação funcione corretamente com o MySQL, você deve configurar o arquivo `.env` da aplicação com as credenciais do banco de dados, incluindo o nome do banco de dados, o usuário e a senha. 
+
+**Exemplo de configuração no arquivo `.env`:**
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=discografia
+DB_USERNAME=root
+DB_PASSWORD=your_password
+
+---
+
