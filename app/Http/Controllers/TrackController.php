@@ -7,6 +7,23 @@ use App\Models\Track;
 
 class TrackController extends Controller
 {
+    public function indexView($albumId)
+    {
+        $tracks = Track::where('album_id', $albumId)->get();
+        return view('tracks.index', compact('tracks', 'albumId'));
+    }
+
+    public function createView($albumId)
+    {
+        return view('tracks.create', compact('albumId'));
+    }
+
+    public function editView($id)
+    {
+        $track = Track::findOrFail($id);
+        return view('tracks.edit', compact('track'));
+    }
+
     public function index()
     {
         return Track::all();
@@ -19,7 +36,8 @@ class TrackController extends Controller
             'album_id' => 'required|exists:albums,id',
         ]);
 
-        return Track::create($request->all());
+        Track::create($request->all());
+        return redirect()->route('tracks.index', $request->album_id);
     }
 
     public function show($id)
@@ -37,13 +55,14 @@ class TrackController extends Controller
         $track = Track::findOrFail($id);
         $track->update($request->all());
 
-        return $track;
+        return redirect()->route('tracks.index', $track->album_id);
     }
 
     public function destroy($id)
     {
-        Track::findOrFail($id)->delete();
+        $track = Track::findOrFail($id);
+        $track->delete();
 
-        return response()->noContent();
+        return redirect()->route('tracks.index', $track->album_id);
     }
 }

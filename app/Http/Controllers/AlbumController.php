@@ -7,6 +7,23 @@ use App\Models\Album;
 
 class AlbumController extends Controller
 {
+    public function indexView()
+    {
+        $albums = Album::all();
+        return view('albums.index', compact('albums'));
+    }
+
+    public function createView()
+    {
+        return view('albums.create');
+    }
+
+    public function editView($id)
+    {
+        $album = Album::findOrFail($id);
+        return view('albums.edit', compact('album'));
+    }
+
     public function index()
     {
         return Album::with('tracks')->get();
@@ -18,7 +35,8 @@ class AlbumController extends Controller
             'name' => 'required|string|max:255',
         ]);
 
-        return Album::create($request->all());
+        Album::create($request->all());
+        return redirect()->route('albums.index');
     }
 
     public function show($id)
@@ -35,13 +53,12 @@ class AlbumController extends Controller
         $album = Album::findOrFail($id);
         $album->update($request->all());
 
-        return $album;
+        return redirect()->route('albums.index');
     }
 
     public function destroy($id)
     {
         Album::findOrFail($id)->delete();
-
-        return response()->noContent();
+        return redirect()->route('albums.index');
     }
 }

@@ -1,0 +1,164 @@
+/* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Cabeçalho */
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: black;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Lista de items */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li {
+    background: white;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form {
+    display: inline-block;
+}
+
+form button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    font-size: inherit;
+}
+
+form button:hover {
+    opacity: 0.8;
+}
+ 
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #343a40;
+    padding: 10px 20px;
+}
+
+.navbar .navbar-brand {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #ffffff;
+    font-size: 18px;
+    margin-left: 20px;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #d1d1d1;
+}
+
+.welcome-container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.welcome-header h1 {
+    font-size: 36px;
+    color: #343a40;
+    margin-bottom: 10px;
+}
+
+.welcome-header p {
+    font-size: 18px;
+    color: #6c757d;
+}
+
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.menu .btn {
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.menu .btn-primary {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+}
+
+.menu .btn-primary:hover {
+    background-color: #0056b3;
+}
